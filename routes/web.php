@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return "absc";
+// });
+
+Route::get('/', function(){
+    return view('index');
+});
+
+Route::get('/explore', function(){
+    return view('pages.explore');
+});
+
+Route::get('/explore/detail', function(){
+    return view('pages.detailNoAuth');
 });
