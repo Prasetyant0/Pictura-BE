@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Pictura</title>
 </head>
+@include('includes.navbarauth')
 <body class="scrollbar-hidden bg-backcolor">
-
+    @yield('content')
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ <script src="{{ asset('assets/js/index.js') }}"></script>
 </html>
