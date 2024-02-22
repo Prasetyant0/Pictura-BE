@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return "absc";
-// });
-
 Route::get('/', function(){
     return view('index');
 });
@@ -28,3 +25,5 @@ Route::get('/explore', function(){
 Route::get('/explore/detail', function(){
     return view('pages.detailNoAuth');
 });
+
+Route::post('/register', [AuthController::class, 'register'])->name('register');

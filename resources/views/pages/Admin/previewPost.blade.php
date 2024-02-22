@@ -82,7 +82,7 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-[#00a8ff] dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-[#0077b6] ">
+                    <a href="dashboard.html" class="flex items-center p-2 text-white rounded-lg hover:bg-[#0077b6] ">
                         <i class="bi bi-file-post text-[20px] text-white"></i>
                         <span class="ms-3">Post Report</span>
                     </a>

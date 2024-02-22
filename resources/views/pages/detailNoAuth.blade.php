@@ -1,5 +1,5 @@
-@extends('layout.master')
-@section('content')
+@extends('layout.master-noauth')
+@section('content-noauth')
     <!-- Main Content -->
     <section class="mt-[100px]">
         <div class="container max-w-screen-2xl mx-auto flex items-center justify-center mb-4">
@@ -375,8 +375,11 @@
     </section>
     <!-- End Main -->
 
+    @push('jsexternal')
     <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
+    @endpush
 
+    @push('jsinternal')
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             const imageHeight = document.getElementById('postImage').clientHeight;
@@ -413,5 +416,6 @@
             }
         }
     </script>
+    @endpush
 
 @endsection

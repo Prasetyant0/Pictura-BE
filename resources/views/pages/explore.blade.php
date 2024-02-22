@@ -1,5 +1,5 @@
-@extends('layout.master')
-@section('content')
+@extends('layout.master-noauth')
+@section('content-noauth')
     <section id="mainSection" class="mt-[100px]">
         <div class="flex justify-center text-center">
             <h1 class="roboto-medium text-black md:text-3xl text-[24px]">Explore the best of Pictura</h1>
@@ -248,5 +248,4 @@
         <!-- end row -->
 
     </section>
-
 @endsection

@@ -2,7 +2,7 @@
 <nav class="bg-backcolor fixed w-full z-20 top-0 start-0 shadow-md">
     <div class="max-w-screen-2xl flex items-center justify-between mx-auto p-4">
         <div class="flex items-center space-x-3">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('assets/img/logoPictura.png') }}" class="h-10" alt="Pictura Logos">
                 <span class="self-center text-2xl roboto-medium whitespace-nowrap"
                     style="color: #0083C9;">Pictura</span>
@@ -11,7 +11,7 @@
                 <ul
                     class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-backcolor rtl:space-x-reverse md:flex-row md:mt-0 md:bg-backcolor">
                     <li>
-                        <a href="explore.html" class="block py-2 px-5 text-center me-2 rounded-full
+                        <a href="/explore" class="block py-2 px-5 text-center me-2 rounded-full
                         bg-secondary text-white">
                             Explore
                         </a>
@@ -36,10 +36,10 @@
             </form>
         </div>
         <div class="flex md:order-2 gap-2 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal"
+            <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                 class="text-white bg-primary hover:bg-primaryDark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center">Log
                 in</button>
-            <button type="button"
+            <button type="button" data-modal-target="signup-modal" data-modal-toggle="signup-modal"
                 class="text-gray-800 bg-btnsec hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-full text-sm px-4 py-2 text-center">Sign
                 up</button>
         </div>

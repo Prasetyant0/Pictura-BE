@@ -35,6 +35,10 @@
 
 /* Font Face End */
 
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
 .roboto-medium {
     font-family: 'Roboto-Medium';
 }
