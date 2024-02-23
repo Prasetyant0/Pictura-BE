@@ -37,3 +37,20 @@ Route::view('/detailhome', 'Pages.Authorized.detailAuth');
 Route::view('/mydetail', 'Pages.Authorized.myDetail');
 Route::view('/album-detail', 'Pages.Authorized.albumPage');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// Admin
+Route::prefix('admin')->group(function () {
+    Route::view('/nimda', 'Admin.loginAdmin');
+    Route::view('/post-report', 'Admin.postReport');
+    Route::view('/account-report', 'Admin.accountReport');
+    Route::view('/comment-report', 'Admin.commentReport');
+    Route::view('/admin-list', 'Admin.adminList');
+    Route::view('/new-admin-add', 'Admin.formAdminNew');
+    Route::view('/detail-admin', 'Admin.detailAdminProfile');
+    Route::view('/preview-acc', 'Admin.previewAcc');
+    Route::view('/preview-comment', 'Admin.previewComment');
+    Route::view('/preview-post', 'Admin.previewPost');
+});
+
+
+
