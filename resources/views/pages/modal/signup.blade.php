@@ -7,7 +7,7 @@
             <!-- Modal header -->
             <div class="px-4 pt-4 md:px-5 md:pt-5 rounded-t">
                 <div class="flex flex-col justify-center items-center">
-                    <div><img src="assets/img/logoPictura.png" alt="" class="h-12 w-10 object-contain">
+                    <div><img src="{{ asset('assets/img/logoPictura.png') }}" alt="" class="h-12 w-10 object-contain">
                     </div>
                     <h1 class="roboto-bold text-xl text-colorText">Get started with Pictura</h1>
                     <span>
@@ -90,7 +90,7 @@
                     <a href="#"
                         class="flex w-full text-black border bg-white hover:bg-backcolor roboto-medium rounded-full text-[15px] px-5 py-2.5 text-center">
                         <div class="relative right-2">
-                            <img src="assets/img/search.png" alt="" width="20">
+                            <img src="{{ asset('assets/img/search.png') }}" alt="" width="20">
                         </div>
                         <div class="ps-[80px]">
                             Continue with Google

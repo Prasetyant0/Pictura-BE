@@ -3,8 +3,10 @@ function previewImage(input) {
     const label = input.parentElement;
     const previewContainer = document.getElementById('preview-container');
     const originalContent = document.getElementById('original-content');
-    label.style.height = 'auto';
-    label.style.width = 'auto';
+    label.classList.remove('w-full');
+    label.classList.remove('h-full');
+    label.classList.add('h-auto');
+    label.classList.add('w-auto');
 
     if (file) {
         const reader = new FileReader();
@@ -13,25 +15,13 @@ function previewImage(input) {
             originalContent.classList.add('hidden');
             const previewImage = document.getElementById('preview-image');
             previewImage.src = e.target.result;
-            const maxWidth = auto;
-            const maxHeight = auto;
-            const image = new Image();
-            image.src = e.target.result;
-            image.onload = function () {
-                const aspectRatio = image.width / image.height;
-                if (aspectRatio > 1) {
-                    previewImage.width = maxWidth;
-                    previewImage.height = maxWidth / aspectRatio;
-                } else {
-                    previewImage.height = maxHeight;
-                    previewImage.width = maxHeight * aspectRatio;
-                }
-            };
         };
         reader.readAsDataURL(file);
     } else {
-        label.style.height = 'full';
-        label.style.width = 'full';
+        label.classList.remove('w-auto');
+        label.classList.remove('h-auto');
+        label.classList.add('w-full');
+        label.classList.add('h-full');
         previewContainer.classList.add('hidden');
         originalContent.classList.remove('hidden');
     }

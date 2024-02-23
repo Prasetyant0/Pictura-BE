@@ -37,3 +37,34 @@ $(document).ready(function () {
         }
     });
 });
+
+
+// Show & Hide Password
+const passwordInput = document.getElementById('password');
+const passwordSignup = document.getElementById('passwordSignup');
+const togglePasswordButton = document.getElementById('togglePassword');
+const togglePasswordSignup = document.getElementById('togglePasswordSignup');
+const browserSupportsShowHide = passwordInput.type !== 'password';
+
+if (browserSupportsShowHide) {
+    togglePasswordButton.style.display = 'none';
+    togglePasswordSignup.style.display = 'none';
+} else {
+    togglePasswordButton.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        const eyeIcon = togglePasswordButton.querySelector('i');
+        eyeIcon.classList.toggle('bi-eye-slash');
+        eyeIcon.classList.toggle('bi-eye');
+    });
+
+    togglePasswordSignup.addEventListener('click', function () {
+        const type = passwordSignup.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordSignup.setAttribute('type', type);
+
+        const eyeIcon = togglePasswordSignup.querySelector('i');
+        eyeIcon.classList.toggle('bi-eye-slash');
+        eyeIcon.classList.toggle('bi-eye');
+    });
+}

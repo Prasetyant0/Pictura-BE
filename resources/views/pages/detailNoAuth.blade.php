@@ -6,9 +6,9 @@
             <div class="w-full mx-3">
                 <div class="flex md:justify-between items-start w-full justify-center">
                     <div class="md:flex items-start back-hidden hidden">
-                        <a href="explore.html">
+                        <a href="/explore">
                         <div class="flex items-center start-3 top-24 z-30">
-                            <svg class="w-8 h-8 text-gray-900 dark:text-white" aria-hidden="true"
+                            <svg class="w-8 h-8 text-gray-900" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="1.5" d="M5 12h14M5 12l4-4m-4 4 4 4" /> </svg>
@@ -83,6 +83,11 @@
                                             <!-- Judul dan Deskripsi -->
                                             <div class="mb-4">
                                                 <h1 class="text-2xl font-bold mb-2">Lorem ipsum dolor sit amet</h1>
+                                                <div class="flex flex-row gap-1">
+                                                        <span class="roboto-medium text-sm">#handsome</span>
+                                                        <span class="roboto-medium text-sm">#fashion</span>
+                                                        <span class="roboto-medium text-sm">#man</span>
+                                                    </div>
                                                 <p class="text-gray-700 line-clamp-2 hover:line-clamp-none">Lorem ipsum dolor sit amet, consectetur
                                                     adipiscing elit. Vivamus congue imperdiet lorem, quis porttitor
                                                     turpis gravida nec. Curabitur ornare magna at lacus bibendum, non
@@ -375,47 +380,9 @@
     </section>
     <!-- End Main -->
 
-    @push('jsexternal')
-    <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
-    @endpush
-
-    @push('jsinternal')
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const imageHeight = document.getElementById('postImage').clientHeight;
-            document.getElementById('postDetail').style.height = imageHeight + 'px';
-        });
-
-        function adjustImageWidth() {
-            const image = document.getElementById('postImage');
-            const imageContainer = document.getElementById('imageContainer');
-
-            if (image.naturalWidth > image.naturalHeight) {
-                // Landscape image
-                imageContainer.classList.remove('w-1/2');
-                imageContainer.classList.add('w-4/5');
-            } else {
-                // Portrait or square image
-                imageContainer.classList.remove('w-4/5');
-                imageContainer.classList.add('w-1/2');
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', adjustImageWidth);
-
-        function btnLikes() {
-            const btnLiked = document.getElementById('btnLike')
-            const iconLike = btnLiked.querySelector('i')
-
-            if (iconLike.classList.contains('bi-heart')) {
-                iconLike.classList.remove('bi-heart')
-                iconLike.classList.add('bi-heart-fill')
-            } else {
-                iconLike.classList.remove('bi-heart-fill')
-                iconLike.classList.add('bi-heart')
-            }
-        }
-    </script>
+    @push('jsInternal')
+    
+    <script src="{{ asset('assets/js/detail.js') }}"></script>
     @endpush
 
 @endsection

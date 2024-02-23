@@ -1,8 +1,8 @@
-<nav class="bg-backcolor fixed w-full z-20 top-0 start-0 shadow-md">
+<nav class="bg-backcolor fixed w-full z-20 top-0 start-0">
     <div class="max-w-screen-2xl flex items-center justify-between mx-auto p-4">
         <div class="flex items-center space-x-3">
             <div>
-                <a href="#" class="flex items-center w-8">
+                <a href="/home" class="flex items-center w-8">
                     <img src="{{ asset('assets/img/logoPictura.png') }}" class="h-10" alt="Pictura Logos">
                 </a>
             </div>
@@ -10,20 +10,20 @@
                 <ul
                     class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-backcolor rtl:space-x-reverse md:flex-row md:mt-0 md:bg-backcolor">
                     <li>
-                        <a href="#"
+                        <a href="/home"
                             class="block py-2 px-5 text-center me-2 rounded-full
                             bg-secondary text-white">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/today"
                             class="block py-2 px-5 text-center me-2 text-gray-900 rounded-full bg-transparent
                         hover:bg-secondary hover:text-white
                         md:hover:text-white">Today</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/create"
                             class="block py-2 px-5 text-center me-2 text-gray-900 rounded-full bg-transparent
                         hover:bg-secondary hover:text-white
                         md:hover:text-white">Create</a>
@@ -50,7 +50,7 @@
         <div class="flex flex-row justify-between gap-5 text-[20px] md:space-x-0">
             <div><button type="button" id="notif-dropdown-btn" data-dropdown-toggle="notif-dropdown"><i
                         class="bi bi-bell-fill text-iconColor"></i></button></div>
-            <div><a href="Profile/profile.html"><i class="bi bi-person-circle text-iconColor"></i></a></div>
+            <div><a href="/profile"><i class="bi bi-person-circle text-iconColor"></i></a></div>
             <div><a href="#"><i class="bi bi-box-arrow-right text-iconColor"></i></a></div>
         </div>
     </div>

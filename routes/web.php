@@ -19,11 +19,21 @@ Route::get('/', function(){
 });
 
 Route::get('/explore', function(){
-    return view('pages.explore');
+    return view('Pages.explore');
 });
 
 Route::get('/explore/detail', function(){
-    return view('pages.detailNoAuth');
+    return view('Pages.detailNoAuth');
 });
 
+Route::view('/home', 'Pages.Authorized.home');
+Route::view('/categoryToday', 'Pages.Authorized.imageTodayKlik');
+Route::view('/today', 'Pages.Authorized.today');
+Route::view('/create', 'Pages.Authorized.create');
+Route::view('/profile', 'Pages.Authorized.Profile.profile');
+Route::view('/profile-setting', 'Pages.Authorized.Profile.editProfile');
+Route::view('/add-new-album', 'Pages.Authorized.makeAlbums');
+Route::view('/detailhome', 'Pages.Authorized.detailAuth');
+Route::view('/mydetail', 'Pages.Authorized.myDetail');
+Route::view('/album-detail', 'Pages.Authorized.albumPage');
 Route::post('/register', [AuthController::class, 'register'])->name('register');

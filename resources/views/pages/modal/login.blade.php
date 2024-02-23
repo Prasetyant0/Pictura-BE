@@ -6,7 +6,7 @@
                 <!-- Modal header -->
                 <div class="px-4 pt-4 md:px-5 md:pt-5 rounded-t">
                     <div class="flex flex-col justify-center items-center">
-                        <div><img src="assets/img/logoPictura.png" alt="" class="h-12 w-10 object-contain">
+                        <div><img src="{{ asset('assets/img/logoPictura.png') }}" alt="" class="h-12 w-10 object-contain">
                         </div>
                         <h1 class="roboto-bold text-xl text-colorText">Welcome to Pictura</h1>
                         <span class="text-sm roboto-regular text-slate-500">Doesn't have an account yet? <button
