@@ -52,6 +52,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role === 'superAdmin';
+    }
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
+
     public function photos()
     {
         return $this->hasMany(Photo::class, 'users_id', 'id');

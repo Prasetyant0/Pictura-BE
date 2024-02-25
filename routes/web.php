@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,29 +15,32 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', function(){
-    return view('index');
+Route::middleware(['web', 'guest'])->group(function () {
+    Route::view('/', 'index')->name('landing');
+    Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('login');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::get('/explore/detail', function(){
+        return view('Pages.detailNoAuth');
+    });
 });
 
-Route::get('/explore', function(){
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::view('/categoryToday', 'Pages.Authorized.imageTodayKlik');
+    Route::view('/today', 'Pages.Authorized.today');
+    Route::view('/create', 'Pages.Authorized.create');
+    Route::view('/profile', 'Pages.Authorized.Profile.profile');
+    Route::view('/profile-setting', 'Pages.Authorized.Profile.editProfile');
+    Route::view('/add-new-album', 'Pages.Authorized.makeAlbums');
+    Route::view('/detailhome', 'Pages.Authorized.detailAuth');
+    Route::view('/mydetail', 'Pages.Authorized.myDetail');
+    Route::view('/album-detail', 'Pages.Authorized.albumPage');
+    Route::get('/explore', function(){
     return view('Pages.explore');
-});
+    });
 
-Route::get('/explore/detail', function(){
-    return view('Pages.detailNoAuth');
+    Route::get('/logout', [AuthController::class,'logout']);
 });
-
-Route::view('/home', 'Pages.Authorized.home');
-Route::view('/categoryToday', 'Pages.Authorized.imageTodayKlik');
-Route::view('/today', 'Pages.Authorized.today');
-Route::view('/create', 'Pages.Authorized.create');
-Route::view('/profile', 'Pages.Authorized.Profile.profile');
-Route::view('/profile-setting', 'Pages.Authorized.Profile.editProfile');
-Route::view('/add-new-album', 'Pages.Authorized.makeAlbums');
-Route::view('/detailhome', 'Pages.Authorized.detailAuth');
-Route::view('/mydetail', 'Pages.Authorized.myDetail');
-Route::view('/album-detail', 'Pages.Authorized.albumPage');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // Admin
 Route::prefix('admin')->group(function () {
@@ -50,6 +54,7 @@ Route::prefix('admin')->group(function () {
     Route::view('/preview-acc', 'Admin.previewAcc');
     Route::view('/preview-comment', 'Admin.previewComment');
     Route::view('/preview-post', 'Admin.previewPost');
+    Route::view('/category-post', 'Admin.category-post');
 });
 
 

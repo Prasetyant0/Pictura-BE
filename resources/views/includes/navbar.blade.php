@@ -11,8 +11,8 @@
                     class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg bg-backcolor rtl:space-x-reverse md:flex-row md:mt-0 md:bg-backcolor">
                     <li>
                         <a href="/home"
-                            class="block py-2 px-5 text-center me-2 rounded-full
-                            bg-secondary text-white">
+                            class="block py-2 px-5 text-center me-2 text-gray-900 rounded-full bg-transparent
+                        hover:bg-secondary hover:text-white {{ request()->is('home') ? 'active' : '' }}">
                             Home
                         </a>
                     </li>
@@ -20,13 +20,13 @@
                         <a href="/today"
                             class="block py-2 px-5 text-center me-2 text-gray-900 rounded-full bg-transparent
                         hover:bg-secondary hover:text-white
-                        md:hover:text-white">Today</a>
+                        {{ request()->is('today') ? 'active' : '' }}">Today</a>
                     </li>
                     <li>
                         <a href="/create"
                             class="block py-2 px-5 text-center me-2 text-gray-900 rounded-full bg-transparent
-                        hover:bg-secondary hover:text-white
-                        md:hover:text-white">Create</a>
+                        hover:bg-secondary hover:text-white {{ request()->is('create') ? 'active' : '' }}
+                        ">Create</a>
                     </li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
             <div><button type="button" id="notif-dropdown-btn" data-dropdown-toggle="notif-dropdown"><i
                         class="bi bi-bell-fill text-iconColor"></i></button></div>
             <div><a href="/profile"><i class="bi bi-person-circle text-iconColor"></i></a></div>
-            <div><a href="#"><i class="bi bi-box-arrow-right text-iconColor"></i></a></div>
+            <div><a href="/logout"><i class="bi bi-box-arrow-right text-iconColor"></i></a></div>
         </div>
     </div>
     <!-- Notif Modal -->

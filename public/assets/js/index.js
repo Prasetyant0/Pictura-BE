@@ -13,20 +13,20 @@ var swiper = new Swiper(".mySwiper", {
         disableOnInteraction: false,
     },
     reverse: true,
-    // breakpoints: {
-    //     640: {
-    //         slidesPerView: 2,
-    //         spaceBetween: 10,
-    //     },
-    //     768: {
-    //         slidesPerView: 4,
-    //         spaceBetween: 10,
-    //     },
-    //     1024: {
-    //         slidesPerView: 5,
-    //         spaceBetween: 10,
-    //     },
-    // },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+        },
+        1024: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+        },
+    },
 });
 
 // Scroll Config

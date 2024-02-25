@@ -100,6 +100,12 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Add New Admin</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/admin/category-post" class="flex items-center p-2 text-white rounded-lg hover:bg-[#0077b6] ">
+                        <i class="text-[20px] text-white bi bi-tags-fill"></i>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Category Post</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </aside>

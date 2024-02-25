@@ -30,7 +30,8 @@
                 </div>
                 <!-- Modal body -->
                 <div class="px-4 pb-4 md:px-5 md:pb-5">
-                    <form class="space-y-4" action="#">
+                    <form class="space-y-4" action="/authenticate" method="POST" id="login-form">
+                        @csrf
                         <div>
                             <label for="username-email"
                                 class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Username /

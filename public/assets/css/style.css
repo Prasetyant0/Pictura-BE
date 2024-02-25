@@ -35,6 +35,12 @@
 
 /* Font Face End */
 
+.active {
+    border-radius: 9999px !important;
+    background-color: #00B4E5 !important;
+    color: white !important;
+}
+
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
