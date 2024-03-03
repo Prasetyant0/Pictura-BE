@@ -12,6 +12,12 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
+        flash()
+        ->options([
+        'timeout' => 3000,
+        'position' => 'top-center',
+        ])
+        ->addError('You are not logged in yet! Please log in.');
         return $request->expectsJson() ? null : route('landing');
     }
 }

@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Console\View\Components\Alert;
 
 class RedirectIfAuthenticated
 {
@@ -21,6 +22,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+            flash()
+            ->option('position', 'top-center')
+            ->option('timeout', 2000)
+            ->addinfo('You are logged in!');
                 return redirect(RouteServiceProvider::HOME);
             }
         }

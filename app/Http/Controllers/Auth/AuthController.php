@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -35,6 +37,45 @@ class AuthController extends Controller
         return response()->json(['status' => 'success', 'user' => $user->username], 200);
     }
 
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/')->with('error', 'Google authentication failed.');
+        }
+
+        if ($user->role === 'admin' || $user->role === 'superAdmin') {
+            return redirect('/')->with('error', 'Access denied for Admin!');
+        }
+
+        $existingUser = User::where('email', $user->email)->first();
+
+        if ($existingUser) {
+            Auth::login($existingUser);
+        } else {
+            $newUser = User::create([
+                'email_verified_at' => now(),
+                'fullName' => $user->name,
+                'email' => $user->email,
+                'password' => bcrypt("Defaultpassword123"),
+                'remember_token' => Str::random(10),
+                'role' => 'user',
+                'provider' => 'google',
+            ]);
+
+            Auth::login($newUser);
+        }
+
+        return redirect()->route('home')->with('success', 'You have successfully logged in with Google!');
+    }
+
+
     public function authenticate(Request $request)
     {
         $request->validate([
@@ -53,7 +94,7 @@ class AuthController extends Controller
             return redirect('/home')->with('success', "Welcome back {$user->username} in Pictura");
         }
 
-        return redirect('/')->withErrors(['login' => 'The provided credentials do not match our records.']);
+        return redirect('/')->with('error', 'The provided credentials do not match our records.');
     }
 
 

@@ -18,7 +18,7 @@ class Favorite extends Model
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    public function photo()
+    public function photosFavorite()
     {
         return $this->belongsTo(Photo::class, 'photos_id', 'id');
     }

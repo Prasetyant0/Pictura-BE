@@ -18,29 +18,29 @@ function adjustImageWidth() {
 
 window.addEventListener('DOMContentLoaded', adjustImageWidth);
 
-function btnLikes() {
-    const btnLiked = document.getElementById('btnLike')
-    const iconLike = btnLiked.querySelector('i')
 
-    if (iconLike.classList.contains('bi-heart')) {
-        iconLike.classList.remove('bi-heart')
-        iconLike.classList.add('bi-heart-fill')
-    } else {
-        iconLike.classList.remove('bi-heart-fill')
-        iconLike.classList.add('bi-heart')
-    }
-}
+// $("#followForm").submit(function (e) {
+//     e.preventDefault();
+//     const formData = $(this).serialize();
+//     $.ajax({
+//         type: "POST",
+//         url: "/toggleFollow",
+//         data: formData,
+//         success: function (response) {
+//             const followBtn = document.getElementById('followButton');
+//             if (response.status === 'followed') {
+//                 followBtn.innerText = "Followed";
+//                 followBtn.classList.remove('bg-btnsec', 'hover:bg-gray-300');
+//                 followBtn.classList.add('bg-gray-300');
+//             } else if (response.status === 'unfollowed') {
+//                 followBtn.innerText = "Follow";
+//                 followBtn.classList.remove('bg-gray-300');
+//                 followBtn.classList.add('bg-btnsec', 'hover:bg-gray-300');
+//             }
+//         },
+//         error: function (error) {
+//             console.error('Error:', error);
+//         },
+//     });
+// });
 
-function toggleFollow() {
-    const followBtn = document.getElementById('followButton');
-
-    if (followBtn.innerText === "Follow") {
-        followBtn.innerText = "Following";
-        followBtn.classList.remove('bg-btnsec', 'hover:bg-gray-300');
-        followBtn.classList.add('bg-gray-300');
-    } else {
-        followBtn.innerText = "Follow";
-        followBtn.classList.remove('bg-gray-300');
-        followBtn.classList.add('bg-btnsec', 'hover:bg-gray-300');
-    }
-}

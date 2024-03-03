@@ -1,20 +1,23 @@
 @extends('layout.master')
 @section('content')
     <main class="max-w-screen-2xl mx-auto px-2">
-        <section class="mt-[80px] mb-3">
-            <div class="flex justify-between text-center pb-4 pt-2 px-4 border-b items-center">
+        <section class="mt-[80px] mb-3 border-b border-t">
+            <div class="flex justify-between text-center pb-4 pt-4 px-4 items-center">
                 <h1 class="roboto-medium text-black text-md text-[20px]">Create a Post</h1>
                 <div class="roboto-medium text-black  text-small">
-                    <a href="home.html" class="block py-2 px-5 text-center rounded-full
+                    <form action="/upload-post" method="POST" enctype="multipart/form-data" id="upload-post-form">
+                @csrf
+                    <button type="submit"
+                        class="block py-2 px-5 text-center rounded-full
                         bg-primary text-white">
                         Publish
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
         <section class="max-w-screen-lg mx-auto">
-            <form action="">
-                <div class="flex gap-4 mt-20">
+
+                <div class="flex gap-4 mt-[30px]">
                     <div class="flex items-center justify-center w-1/2">
                         <label for="dropzone-file"
                             class="flex flex-col items-center justify-center w-full h-full bg-btnsec rounded-xl cursor-pointer">
@@ -35,52 +38,70 @@
                                     recommend using
                                     high quality .jpg files less than 20mb</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" onchange="previewImage(this)" />
+                            <input id="dropzone-file" name="file-photo" type="file" class="hidden"
+                                onchange="previewImage(this)" />
                         </label>
                     </div>
                     <div class="w-full">
-                        <div class="mb-6">
+                        <div class="mb-3">
                             <label for="title"
                                 class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Title</label>
-                            <input type="text" id="title"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Add a title">
+                            <input type="text" id="title" name="photo_title"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                placeholder="Add a title">
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-3">
                             <label for="description"
                                 class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Description</label>
-                            <textarea id="description" rows="4"
+                            <textarea id="description" rows="4" name="photo_description"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
                                 placeholder="Add a detailed description"></textarea>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-3">
                             <label for="tagged-topics"
-                                class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Tagged Topics</label>
-                            <input type="text" id="tagged-topics"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Search or add new for tag">
+                                class="block mb-2 text-sm roboto-medium text-gray-900">Tagged Topics</label>
+                            <div class="flex flex-wrap gap-1 pb-1" id="tag-container">
+                            </div>
+                            <input type="text" id="tagged-topics" name="tagged_topics"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                placeholder="Press enter or add a comma after each tag (max 5 tags)" onkeydown="handleTagInput(event)">
                         </div>
-                        <div class="mb-6">
-                            <label for="countries"
-                                class="block mb-2 text-sm roboto-medium text-gray-900">Albums</label>
+                        <div class="mb-3">
+                            <label for="category_id" class="block mb-2 text-sm roboto-medium text-gray-900">Category
+                                Post</label>
+                            <select id="category_id"
+                                class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                name="category_id">
+                                <option selected>Select category for your post</option>
+                                @foreach ($categories as $c)
+                                    <option value="{{ $c->id }}">{{ $c->category_title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="albums_id" class="block mb-2 text-sm roboto-medium text-gray-900">Albums</label>
                             <div class="flex gap-2">
-                                <select id="countries"
-                                    class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-lg focus:ring-primary focus:border-primring-primary block w-full p-2.5">
+                                <select id="albums_id"
+                                    class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                    name="albums_id">
                                     <option selected>Select albums or add new albums</option>
-                                    <option value="">Mini Soccer</option>
-                                    <option value="">Family</option>
-                                    <option value="">Bikers</option>
-                                    <option value="">Fashion</option>
+                                    @foreach ($albums as $a)
+                                    <option value="{{ $a->id }}">{{ $a->album_name }}</option>
+                                    @endforeach
                                 </select>
-                                <button type="button" class="bg-btnsec w-10 p-2 rounded-lg" data-modal-toggle="add-new-albums" data-modal-target="add-new-albums"><i
+                                <button type="button" class="bg-btnsec w-10 p-2 rounded-lg"
+                                    data-modal-toggle="add-new-albums" data-modal-target="add-new-albums"><i
                                         class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>
+                        <input type="hidden" name="users_id" value="{{ Auth::id() }}">
                     </div>
             </form>
             </div>
             </div>
         </section>
     </main>
-@include('Pages.Authorized.Modal.albumsModal')
+    @include('Pages.Authorized.Modal.albumsModal')
 @endsection
 
 @push('jsInternalAuth')

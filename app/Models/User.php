@@ -52,6 +52,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    const GENDER_MALE = 'Laki-laki';
+    const GENDER_FEMALE = 'Perempuan';
+
+    public static function getGenders()
+    {
+        return [
+            self::GENDER_MALE => 'Male',
+            self::GENDER_FEMALE => 'Female',
+        ];
+    }
+
     public function isAdmin()
     {
         return $this->role === 'admin';
@@ -76,9 +87,19 @@ class User extends Authenticatable
         return $this->hasMany(Album::class, 'users_id', 'id');
     }
 
-    public function follows()
+    public function isFollowing($otherUser)
     {
-        return $this->hasMany(Follow::class, 'users_id', 'id');
+        return $this->followers()->where('following_id', $otherUser)->exists();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'users_id')->withTimestamps();
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'users_id', 'following_id')->withTimestamps();
     }
 
     public function accountReports()
@@ -94,5 +115,10 @@ class User extends Authenticatable
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function userFavorites()
+    {
+        return $this->hasMany(Favorite::class, 'users_id', 'id');
     }
 }

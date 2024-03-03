@@ -106,45 +106,6 @@ $(document).ready(function () {
     });
 });
 
-// document.getElementById('login-form').addEventListener('submit', async (event) => {
-//     event.preventDefault();
-
-//     const usernameEmail = document.getElementById('username-email').value;
-//     const password = document.getElementById('password').value;
-//     const token = document.querySelector('input[name="_token"]').value;
-
-//     try {
-//         const response = await fetch('/authenticate', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-CSRF-TOKEN': token
-//             },
-//             body: JSON.stringify({
-//                 usernameEmail,
-//                 password,
-//             }),
-//         });
-
-//         const data = await response.json();
-
-//         if (response.ok) {
-//             if (data.status === 'success') {
-//                 // Redirect based on user role if needed
-//                 window.location.href = '/home';
-//             } else {
-//                 console.log(data.message);
-//             }
-//         } else {
-//             console.log(data.message);  // Log the error message
-//         }
-//     } catch (error) {
-//         console.error('An error occurred during the fetch operation:', error);
-//     }
-// });
-
-
-
 // Show & Hide Password
 const passwordInput = document.getElementById('password');
 const passwordSignup = document.getElementById('passwordSignup');

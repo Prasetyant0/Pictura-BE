@@ -13,7 +13,7 @@ class Like extends Model
         'users_id'
     ];
 
-    public function photo()
+    public function postLiked()
     {
         return $this->belongsTo(Photo::class, 'photos_id', 'id');
     }
@@ -21,5 +21,12 @@ class Like extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id', 'id');
+    }
+
+    public static function isLiked($postId, $userId)
+    {
+        return self::where('photos_id', $postId)
+            ->where('users_id', $userId)
+            ->exists();
     }
 }

@@ -66,7 +66,7 @@
                                 <span class="roboto-bold text-colorText text-[15px]">OR</span>
                             </div>
                             <div class="flex w-full">
-                                <a href="#"
+                                <a href="login/google"
                                     class="flex w-full text-black border bg-white hover:bg-backcolor roboto-medium rounded-full text-[15px] px-5 py-2.5 text-center">
                                     <div class="relative right-2">
                                         <img src="assets/img/search.png" alt="" width="20">

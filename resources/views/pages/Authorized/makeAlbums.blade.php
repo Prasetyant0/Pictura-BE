@@ -19,7 +19,8 @@
             </div>
         </section>
         <section class="max-w-screen-lg mx-auto">
-            <form action="">
+            <form action="/save-news-album" method="POST" enctype="multipart/form-data" id="newAlbumForm">
+                @csrf
                 <div class="flex gap-4 mt-20">
                     <div class="flex items-center justify-center w-1/2">
                         <label for="dropzone-file"
@@ -42,26 +43,26 @@
                                     recommend using
                                     high quality .jpg files less than 20mb</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" onchange="previewImage(this)" />
+                            <input id="dropzone-file" name="albumWallpaperFile" type="file" class="hidden" onchange="previewImage(this)" />
                         </label>
                     </div>
                     <div class="w-full">
                         <div class="mb-6">
                             <label for="title"
                                 class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Title</label>
-                            <input type="text" id="title"
+                            <input type="text" id="title" name="albumTitle"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="Add a title">
                         </div>
                         <div class="mb-6">
                             <label for="description"
                                 class="block mb-2 text-sm roboto-medium text-gray-900 dark:text-white">Description</label>
-                            <textarea id="description" rows="4"
+                            <textarea id="description" rows="4" name="albumDescription"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
                                 placeholder="Add a detailed description"></textarea>
                         </div>
                         <div class="roboto-medium text-black text-small flex justify-end">
-                            <button type="button" class="block py-2 px-5 text-center rounded-xl
+                            <button type="submit" class="block py-2 px-5 text-center rounded-xl
                         bg-primary text-white">
                                 Create
                             </button>

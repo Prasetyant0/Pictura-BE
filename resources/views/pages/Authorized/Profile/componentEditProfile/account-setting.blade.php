@@ -9,21 +9,22 @@
                     <label for="email" class="block mb-2 text-sm roboto-regular text-iconColor">Email</label>
                     <input type="email" id="email"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
-                        placeholder="example777@example.com" value="janggarprakoso@gmail.com" required>
+                        placeholder="example777@example.com" value="{{ $userData->email }}" required>
                 </div>
                 <div class="mb-6">
                     <label for="birthdate" class="block mb-2 text-sm roboto-regular text-iconColor">Birthdate</label>
                     <input type="date" name="birthdate" id="birthdate"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm roboto-regular rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
-                        required value="1998-06-21">
+                        value="{{ $userData->birthdate }}">
                 </div>
                 <div class="mb-6">
                     <label for="gender" class="block mb-2 text-sm roboto-regular text-iconColor">Gender</label>
                     <select id="gender"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl roboto-regular focus:ring-primary focus:border-primary block w-full p-2.5">
                         <option selected>Choose your gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        @foreach ($getGender as $key => $value)
+                        <option value="{{ $key }}" {{ $userData->gender == $key ? 'selected' : '' }}>{{ $value }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-6 flex flex-col space-y-2">

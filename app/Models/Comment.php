@@ -14,12 +14,12 @@ class Comment extends Model
         'comment_fill'
     ];
 
-    public function user()
+    public function userPostComment()
     {
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    public function photo()
+    public function photoPost()
     {
         return $this->belongsTo(Photo::class, 'photos_id', 'id');
     }
