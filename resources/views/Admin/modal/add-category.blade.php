@@ -21,19 +21,20 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="#" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="/admin/save-new-category" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <label class="block mb-2 text-sm roboto-medium text-gray-900" for="photo-category">Photo
+                        <label class="block mb-2 text-sm roboto-medium text-gray-900" for="photo_category">Photo
                             Catgeory</label>
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                            id="photo-category" type="file" name="photo-category">
+                            id="photo_category" type="file" name="photo_category" required>
                     </div>
                     <div class="col-span-2">
-                        <label for="category-name" class="block mb-2 text-sm roboto-medium text-gray-900">Catgeory
+                        <label for="category_title" class="block mb-2 text-sm roboto-medium text-gray-900">Catgeory
                             Name</label>
-                        <input type="text" name="category-name" id="category-name"
+                        <input type="text" name="category_title" id="category_title"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                             placeholder="Add a category name" required>
                     </div>

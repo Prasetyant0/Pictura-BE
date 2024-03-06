@@ -21,26 +21,26 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="p-4 md:p-5">
+                <form class="p-4 md:p-5" id="albumFormAdd" enctype="multipart/form-data">
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
                             <label class="block mb-2 text-sm roboto-medium text-gray-900"
                                 for="wallpaper-album">Wallpaper Album</label>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                                id="wallpaper-album" type="file">
+                                id="wallpaper-album" type="file" name="albumWallpaperFile" required>
                         </div>
                         <div class="col-span-2">
                             <label for="title"
                                 class="block mb-2 text-sm roboto-medium text-gray-900">Title</label>
-                            <input type="text" name="title" id="title"
+                            <input type="text" name="albumTitle" id="title"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="Add a title" required>
                         </div>
                         <div class="col-span-2">
                             <label for="description"
                                 class="block mb-2 text-sm roboto-medium text-gray-900">Album Description</label>
-                            <textarea id="description" rows="4"
+                            <textarea id="description" rows="4" name="albumDescription"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
                                 placeholder="Write album description here"></textarea>
                         </div>

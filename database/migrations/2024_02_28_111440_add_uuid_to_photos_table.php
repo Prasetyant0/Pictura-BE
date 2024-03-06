@@ -17,8 +17,6 @@ return new class extends Migration
         Schema::table('photos', function (Blueprint $table) {
             $table->uuid('uuid')->after('id')->nullable();
         });
-
-        // Menggunakan DB::table untuk memasukkan nilai UUID
         $photos = DB::table('photos')->get();
         foreach ($photos as $photo) {
             DB::table('photos')->where('id', $photo->id)->update(['uuid' => Uuid::uuid4()->toString()]);

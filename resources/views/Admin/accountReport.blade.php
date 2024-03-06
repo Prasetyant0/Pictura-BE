@@ -120,72 +120,32 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($accountReport as $account)
                             <tr class="bg-white border-b hover:bg-gray-50">
                                 <td class="w-4 p-4">
-                                    1
+                                    {{ $loop->iteration }}
                                 </td>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    mahmudmd
+                                    {{ $account->reportedUser->username == null ? $account->reportedUser->fullName : $account->reportedUser->username }}
                                 </th>
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    janggar07
+                                    {{ $account->reporter->username == null ? $account->reporter->fullName : $account->reporter->username }}
                                 </td>
                                 <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    Bio orang ini mengandung kata-kata kasar!
+                                    {{ $account->reason }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex flex-row gap-2">
                                         <a href="/admin/preview-acc"
                                             class="font-medium text-blue-600 hover:underline">Preview</a>
                                         <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-4 p-4">
-                                    2
-                                </td>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    evvdnur
-                                </th>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    ilhamoff
-                                </td>
-                                <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    saya kesel sama orang ini
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-row gap-2">
-                                        <a href="previewAcc.html" class="font-medium text-blue-600 hover:underline">Preview</a>
-                                        <span>|</span>
-                                        <button type="button" data-modal-target="ban-option" data-modal-toggle="ban-option" class="font-medium text-blue-600 hover:underline">Ban</button>
+                                        <a href="#" class="font-medium text-blue-600 hover:underline">Ban</a>
                                         <span>|</span>
                                         <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-4 p-4">
-                                    3
-                                </td>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    kelincibandot
-                                </th>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    abdul209
-                                </td>
-                                <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    Di dalam fotonya ada darah
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-row gap-2">
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Preview</a>
-                                        <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"

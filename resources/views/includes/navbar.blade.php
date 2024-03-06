@@ -50,7 +50,9 @@
         <div class="flex flex-row justify-between gap-5 text-[20px] md:space-x-0">
             <div><button type="button" id="notif-dropdown-btn" data-dropdown-toggle="notif-dropdown"><i
                         class="bi bi-bell-fill text-iconColor"></i></button></div>
-            <div><a href="/profile/{{ Auth::id() }}"><i class="bi bi-person-circle text-iconColor"></i></a></div>
+            <div><a href="/profile/{{ Auth::id() }}"><img
+                            src="{{ asset('profile_photos/' . Auth::user()->photo_profile) }}"
+                            alt="" class="object-cover rounded-full h-7 w-7 object-top border-2 border-iconColor"></a></div>
             <div><a href="/logout"><i class="bi bi-box-arrow-right text-iconColor"></i></a></div>
         </div>
     </div>

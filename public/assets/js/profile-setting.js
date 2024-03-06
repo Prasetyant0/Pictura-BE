@@ -17,14 +17,24 @@ document.getElementById('fileInput').addEventListener('change', function (event)
     }
 });
 
-document.getElementById('deactivate').addEventListener('click', function () {
-    var button = this;
-    if (button.textContent.trim().toLowerCase() === 'deactivate') {
+function toggleDeactivate() {
+    var button = document.getElementById('deactivate');
+    var inputDeactivate = document.querySelector('input[name="deactivate_account"]');
+
+    console.log('Before:', inputDeactivate.value);
+
+    var initialValue = parseInt(inputDeactivate.value);
+
+    if (initialValue === 1) {
         button.textContent = 'Deactivated';
+        inputDeactivate.value = 0;
     } else {
         button.textContent = 'Deactivate';
+        inputDeactivate.value = 1;
     }
-})
+
+    console.log('After:', inputDeactivate.value);
+}
 
 function showContent(contentToShow) {
     const links = [editProfileLink, accountSettingLink, changePasswordLink];

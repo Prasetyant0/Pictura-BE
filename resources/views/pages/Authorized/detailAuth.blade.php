@@ -6,16 +6,16 @@
             <div class="w-full mx-3">
                 <div class="flex md:justify-between items-start w-full justify-center">
                     <div class="md:flex items-start back-hidden hidden">
-                        <a href="/home">
+                        <button type="button" id="backButton">
                             <div class="flex items-center start-3 top-24 z-30">
                                 <svg class="w-8 h-8 text-gray-900 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="1.5" d="M5 12h14M5 12l4-4m-4 4 4 4" />
                                 </svg>
-                                <span class="ml-2 w-full">Back</span>
+                                <span class="w-full">Back</span>
                             </div>
-                        </a>
+                        </button>
                     </div>
 
                     <div class="mx-auto md:w-1/2 bg-white rounded-xl shadow-md overflow-hidden mb-16 w-full"
@@ -55,7 +55,7 @@
                                                         aria-labelledby="btn-more">
                                                         <li class="flex ml-2 items-center">
                                                             <i class="bi bi-exclamation-triangle"></i>
-                                                            <a href="#"
+                                                            <a data-modal-toggle="report-post" data-modal-target="report-post" type="button"
                                                                 class="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
                                                         </li>
                                                         <li class="flex ml-2 items-center">
@@ -68,9 +68,10 @@
                                             </div>
                                         </div>
                                         <div class="btn-save">
-                                            <button type="button" data-tooltip-target="notif-favorite" id="add-to-favorite" data-photo-id="{{ $post->id }}"
-                                                data-tooltip-trigger="click"
-                                                class="text-white bg-primary hover:bg-primaryDark roboto-medium rounded-full text-sm px-4 py-2 text-center">Save</button>
+                                            <button type="button" data-tooltip-target="notif-favorite" id="add-to-favorite"
+                                                data-photo-id="{{ $post->id }}" data-tooltip-trigger="click"
+                                                class="text-white bg-primary hover:bg-primaryDark roboto-medium rounded-full text-sm px-4 py-2 text-center">
+                                                Save</button>
                                             <div id="notif-favorite" role="tooltip"
                                                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm
                                                     roboto-medium text-white bg-tooltipBg rounded-lg shadow-sm opacity-0
@@ -115,11 +116,11 @@
                                                         </div>
                                                         <div>
                                                             @if ($post->userPhotos->username == null)
-                                                            <h2 class="roboto-medium text-[15px]">
-                                                                {{ $post->userPhotos->fullName }}</h2>
+                                                                <h2 class="roboto-medium text-[15px]">
+                                                                    {{ $post->userPhotos->fullName }}</h2>
                                                             @else
-                                                            <h2 class="roboto-medium text-[15px]">
-                                                                {{ $post->userPhotos->username }}</h2>
+                                                                <h2 class="roboto-medium text-[15px]">
+                                                                    {{ $post->userPhotos->username }}</h2>
                                                             @endif
                                                             <p class="roboto-light text-[15px]" id="followerCount">
                                                                 {{ $post->userPhotos->followers->count() }} followers</p>
@@ -222,60 +223,64 @@
         </div>
         <div class="flex justify-center items-center mx-auto max-w-screen-2xl mt-[20px] lg:px-4 px-3 mb-[20px]">
             <div class="columns-2 sm:columns-4 md:columns-6 space-y-4">
-                <div>
-                    <a href="detailAuth.html">
-                        <img class="h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
-                    </a>
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="">
-                </div>
+                @forelse ($postGroupCategory as $group)
+                    <div class="relative rounded-lg overflow-hidden group" id="imageShow">
+                        <a href="/explore/detail/{{ $group->uuid }}">
+                            <img class="h-auto max-w-full rounded-lg transition-transform transform-gpu group-hover:scale-110 duration-300"
+                                src="{{ asset('gallery/' . $group->file_location) }}" alt="{{ $group->photo_title }}">
+                        </a>
+                    </div>
+                @empty
+                @endforelse
             </div>
         </div>
     </section>
     <!-- End Main -->
+<!-- Modal Report -->
+    <div tabindex="-1" aria-hidden="true" id="report-post"
+        class="hidden report-modal overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                    <h3 class="text-lg roboto-medium text-gray-900">
+                        Enter the reason for your report
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                        data-modal-toggle="report-post">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form class="p-4 md:p-5" action="/report-post/send" method="POST">
+                    @csrf
+                    <input type="hidden" name="photos_id" value="{{ $post->id }}">
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="col-span-2">
+                            <label for="reason"
+                                class="block mb-2 text-sm roboto-medium text-gray-900">Reason</label>
+                            <textarea id="reason" rows="4" name="reason"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-xl border border-gray-300 focus:ring-primary focus:border-primary"
+                                placeholder="Write the reason here"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="text-white inline-flex items-center bg-primary hover:bg-primaryDark roboto-medium rounded-xl text-sm px-5 py-2.5 text-center">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Report -->
+
 
     @include('Pages.Authorized.Modal.reportModal')
 @endsection
@@ -286,119 +291,8 @@
 @endpush
 @push('jsInternalAuth')
     <script src="{{ asset('assets/js/detail.js') }}"></script>
+    <script src="{{ asset('assets/js/detailAuth.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $("#add-to-favorite").click(function() {
-                const photoId = $(this).data("photo-id") ;
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/add-to-favorite',
-                    data: {
-                        '_token': $('meta[name="csrf-token"]').attr('content'),
-                        'photos_id': photoId,
-                    },
-                    success: function(response) {
-                        $('#notif-favorite').text(response.message);
-                        $('#notif-favorite').removeClass('invisible').addClass('visible');
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                    }
-                });
-            });
-        });
-
-        $(document).ready(function() {
-            checkFollowStatus();
-        });
-
-        function checkFollowStatus() {
-            const followingId = $("#followButton").data("following-id");
-            const followBtn = $("#followButton");
-
-            $.ajax({
-                type: "GET",
-                url: `/checkFollow/${followingId}`,
-                success: function(response) {
-                    if (response.isFollowing) {
-                        followBtn.text("Followed");
-                        followBtn.removeClass('bg-btnsec hover:bg-gray-300');
-                        followBtn.addClass('bg-gray-300');
-                    } else if (response.isFollowing == false) {
-                        followBtn.text("Follow");
-                        followBtn.removeClass('bg-gray-300');
-                        followBtn.addClass('bg-btnsec hover:bg-gray-300');
-                    }
-                },
-                error: function(error) {
-                    console.error('Error:', error);
-                }
-            });
-        }
-
-        $("#followButton").click(function() {
-            const followButton = $(this);
-            const followingId = followButton.data("following-id");
-            const urlFollow = `/toggleFollow/${followingId}`;
-
-            $.ajax({
-                type: "POST",
-                url: urlFollow,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    console.log(response);
-                    $("#followerCount").text(response.followerCount + " followers")
-                    if (response.following) {
-                        followButton.text("Followed");
-                        followButton.removeClass('bg-btnsec hover:bg-gray-300');
-                        followButton.addClass('bg-gray-300');
-                    } else if (response.following == false) {
-                        followButton.text("Follow");
-                        followButton.removeClass('bg-gray-300');
-                        followButton.addClass('bg-btnsec hover:bg-gray-300');
-                    }
-                },
-                error: function(error) {
-                    console.error('Error:', error);
-                }
-            });
-        });
-
-
-        $(document).on('click', '[data-modal-toggle]', function() {
-            var modalToggle = $(this).data('modal-toggle');
-            var modalTarget = $(this).data('modal-target');
-            if (modalToggle === 'report-modal') {
-                $('#' + modalTarget).removeClass('hidden');
-            }
-        });
-
-        $("#commentPostForm").submit(function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "/commentPost",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    showComments();
-                    toastr.success('Comment sent successfully.', 'Success');
-                    toastr.options.timeOut = 1000;
-                    $("#commentPostForm input[name='commentPost']").val("");
-                    updateCommentTotal(response.commentCount);
-                },
-                error: function(errors) {
-                    toastr.error('Failed to send comment!', 'Error');
-                    toastr.options.timeOut = 1000;
-                }
-            });
-        });
-
         function showComments() {
             $.get("/showComment/{{ $post->id }}", {}, function(dataComment) {
                 $("#bodyComment").html(dataComment);
@@ -407,62 +301,6 @@
 
         $(document).ready(function() {
             showComments();
-        });
-
-        function updateCommentTotal(commentCount) {
-            const commentText = commentCount + (commentCount === 1 ? ' Comment' : ' Comments');
-            $('#commentCount').text(commentText);
-        }
-
-        $("#likeForm").submit(function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const idPost = $('input[name="idPost"]').val();
-            const isLiked = $('#btnLike i').hasClass('bi-heart-fill');
-            $.ajax({
-                type: "POST",
-                url: "/likePost",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log('Liked this Post.', response);
-                    changeBtnLike(idPost, !isLiked);
-                    updateLikeTotal(response.likeTotal);
-                },
-                error: function(error) {
-                    console.error('Error:', error);
-                },
-            });
-        });
-
-        function updateLikeTotal(likeTotal) {
-            $('#likeTotal').text(likeTotal);
-        }
-
-        function changeBtnLike(idPost, isLiked) {
-            const btnLiked = $("#btnLike");
-            const iconLike = btnLiked.find('i');
-
-            if (isLiked) {
-                iconLike.removeClass('bi-heart').addClass('bi-heart-fill');
-            } else {
-                iconLike.removeClass('bi-heart-fill').addClass('bi-heart');
-            }
-        }
-
-        // Copy Link
-        $("#btnCopy").click(function(e) {
-            e.preventDefault();
-            var currentUrl = window.location.href;
-            var tooltip = document.getElementById('notif-copy');
-
-            navigator.clipboard.writeText(currentUrl).then(() => {
-                setTimeout(function() {
-                    tooltip.classList.remove('visible');
-                    tooltip.classList.add('invisible');
-                }, 1000);
-            });
         });
     </script>
 @endpush

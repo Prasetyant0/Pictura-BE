@@ -41,23 +41,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-4 p-4">
-                                    1
-                                </td>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    Soccer
-                                </th>
-
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-row gap-2">
-                                        <a href="previewPost.html"
-                                            class="font-medium text-blue-600 hover:underline">Preview</a>
-                                        <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($categories as $category)
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="w-4 p-4">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        {{ $category->category_title }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-row gap-2">
+                                            <a href="#"
+                                                class="font-medium text-blue-600 hover:underline">Preview</a>
+                                            <span>|</span>
+                                            <a href="/admin/delete-category/{{ $category->id }}" class="font-medium text-blue-600 hover:underline">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
@@ -103,3 +104,51 @@
     </main>
     @include('Admin.modal.add-category')
 @endsection
+@push('scriptjsInternalAdmin')
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    success: function(response) {
+                        updateTable(response.category);
+                        const closeButton = document.querySelector(
+                            '[data-modal-toggle="add-new-category"]');
+                        closeButton.click();
+                    },
+                    error: function(error) {
+                        console.log("Error:", error.responseJSON.error);
+                        alert("Failed to save category. " + error.responseJSON.error);
+                    }
+                });
+            });
+
+            function updateTable(category) {
+                var newRow = '<tr class="bg-white border-b hover:bg-gray-50">' +
+                    '<td class="w-4 p-4">' + category.number + '</td>' +
+                    '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">' + category
+                    .title + '</th>' +
+                    '<td class="px-6 py-4">' +
+                    '<div class="flex flex-row gap-2">' +
+                    '<a href="previewPost.html" class="font-medium text-blue-600 hover:underline">Preview</a>' +
+                    '<span>|</span>' +
+                    '<a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>';
+
+                $('tbody').append(newRow);
+                $('form')[0].reset();
+            }
+        });
+    </script>
+@endpush

@@ -8,7 +8,8 @@
                     here is visible to any who can view your
                     profile.</p>
             </div>
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="/update-profile/{{ Auth::user()->id }}" method="post" enctype="multipart/form-data" id="updateProfileForm">
+                @csrf
                 <div class="flex flex-col pt-3 space-y-3 mb-6">
                     <div>
                         <p class="roboto-regular text-sm text-iconColor">Photo</p>
@@ -35,21 +36,21 @@
                 <div class="mb-6">
                     <label for="full-name" class="block mb-2 text-sm roboto-regular text-iconColor">Full
                         Name</label>
-                    <input type="text" id="full-name"
+                    <input type="text" id="full-name" name="fullName"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
-                        placeholder="Enter your full name" value="{{ $userData->fullName }}" required>
+                        placeholder="Enter your full name" value="{{ $userData->fullName }}">
                 </div>
                 <div class="mb-6">
                     <label for="bio" class="block mb-2 text-sm roboto-regular text-iconColor">Bio</label>
-                    <textarea id="bio" rows="4"
+                    <textarea id="bio" rows="4" name="bio" maxlength="500"
                         class="block p-2.5 w-full text-sm text-colorText bg-gray-50 rounded-xl border border-gray-300 focus:ring-primary focus:border-primary"
                         placeholder="Write your bio">{{ $userData->bio }}</textarea>
                 </div>
                 <div class="mb-6">
                     <label for="username" class="block mb-2 text-sm roboto-regular text-iconColor">Username</label>
-                    <input type="text" id="username"
+                    <input type="text" id="username" name="username"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
-                        placeholder="Enter your username" value="{{ $userData->username }}" required>
+                        placeholder="Enter your username" value="{{ $userData->username }}">
                 </div>
                 <div class="mb-6 flex items-center justify-end">
                     <button type="submit"

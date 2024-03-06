@@ -55,4 +55,37 @@ class AlbumController extends Controller
         ]);
         return response()->json(['success' => true]);
     }
+
+    public function addAlbum(Request $request)
+    {
+        $usersId = Auth::user()->id;
+        $request->validate([
+            'albumWallpaperFile' => 'required|image|mimes:png,jpg,jpeg|max:10480',
+            'albumTitle' => 'required|string|max:25',
+            'albumDescription' => 'nullable|string|max:100',
+        ]);
+
+        if ($request->hasFile('albumWallpaperFile')) {
+            $filePhoto = $request->file('albumWallpaperFile');
+            $extension = $filePhoto->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $filePhoto->move('albumWallpaper', $filename);
+
+            $album = Album::create([
+                'album_name' => $request->albumTitle,
+                'album_description' => $request->albumDescription,
+                'album_wallpaper' => $filename,
+                'users_id' => $usersId,
+            ]);
+
+            return response()->json(['success' => 'Album created successfully', 'album' => $album]);
+        }
+
+        return response()->json(['error' => 'Failed to add album. Please check the error message.'], 422);
+    }
+
+    public function updateAlbum(Request $request, $id)
+    {
+
+    }
 }

@@ -28,12 +28,14 @@ return new class extends Migration
                 WHERE
                 (photo_title LIKE CONCAT("%", search_term, "%") COLLATE utf8mb4_general_ci
                 OR tag_topic LIKE CONCAT("%", search_term, "%") COLLATE utf8mb4_general_ci)
+                AND visibility = 1
                 AND users.account_status = 1
                 AND users.role = "user"
                 ORDER BY photos.created_at DESC;
                 ELSE
                 SELECT photos.* FROM photos JOIN users ON photos.users_id = users.id
                 WHERE users.account_status = 1
+                AND visibility = 1
                 AND users.role = "user"
                 ORDER BY created_at DESC;
                 END IF;

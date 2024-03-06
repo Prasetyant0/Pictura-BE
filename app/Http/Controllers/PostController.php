@@ -53,7 +53,7 @@ class PostController extends Controller
             'photo_title' => 'required|string|max:255',
             'photo_description' => 'nullable|string',
             'tagged_topics' => 'nullable|string|max:255',
-            'category_id' => 'required|exists:categorys,id',
+            'category_id' => 'required|exists:categories,id',
             'albums_id' => 'nullable|exists:albums,id',
         ]);
 

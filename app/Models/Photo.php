@@ -18,7 +18,8 @@ class Photo extends Model
         'tag_topic',
         'users_id',
         'albums_id',
-        'category_id'
+        'category_id',
+        'visibility'
     ];
 
     protected static function boot()

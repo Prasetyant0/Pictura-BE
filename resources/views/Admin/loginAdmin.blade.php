@@ -17,18 +17,19 @@
                 <h1 class="roboto-medium text-backcolor text-2xl">Sign in</h1>
             </div>
             <div class="mt-10 w-full">
-                <form action="#" method="post">
+                <form action="/authenticate-check" method="post" novalidate>
+                    @csrf
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm roboto-medium text-backcolor">Email
                         address</label>
-                    <input type="email" id="email"
+                    <input type="email" id="email" name="email"
                         class="bg-[#252527] border border-[#414042] text-backcolor text-sm rounded-xl focus:ring-btnsec
                         focus:border-btnsec block w-full p-2.5" required />
                 </div>
                 <div class="mb-6">
                     <label for="password"
                         class="block mb-2 text-sm roboto-medium text-backcolor">Password</label>
-                    <input type="password" id="password"
+                    <input type="password" id="password" name="password"
                         class="bg-[#252527] border border-[#414042] text-backcolor text-sm rounded-xl
                         focus:ring-btnsec focus:border-btnsec block w-full p-2.5" required />
                 </div>

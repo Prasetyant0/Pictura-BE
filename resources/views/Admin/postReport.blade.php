@@ -115,74 +115,44 @@
                                     Reason
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Post Status
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($postReport as $post)
                             <tr class="bg-white border-b hover:bg-gray-50">
                                 <td class="w-4 p-4">
-                                    1
+                                    {{ $loop->iteration }}
                                 </td>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    Mimes Politik
+                                    {{ $post->photo->photo_title }}
                                 </th>
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    janggar07
+                                    {{ $post->reporter->username == null ? $post->reporter->fullName : $post->reporter->username }}
                                 </td>
                                 <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    Postingan ini mengandung sara dibagian deskripsi nya
+                                    {{ $post->reason }}
+                                </td>
+                                <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
+                                    @if ($post->photo->visibility == 1)
+                                        Active
+                                    @else
+                                        Takedown
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex flex-row gap-2">
-                                        <a href="/admin/preview-post" class="font-medium text-blue-600 hover:underline">Preview</a>
+                                        <a href="/admin/preview-post/{{ $post->photo->id }}" class="font-medium text-blue-600 hover:underline">Preview</a>
                                         <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
+                                        <a href="/admin/takedown-post/{{ $post->photo->id }}" class="font-medium text-blue-600 hover:underline">Delete</a>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-4 p-4">
-                                    2
-                                </td>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    Seni Abstrak
-                                </th>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    ilhamoff
-                                </td>
-                                <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    gambarnya gak jelas
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-row gap-2">
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Preview</a>
-                                        <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="w-4 p-4">
-                                    3
-                                </td>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    Gunung kerinci
-                                </th>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    abdul209
-                                </td>
-                                <td class="px-6 py-4 font-reguler text-gray-900 whitespace-nowrap">
-                                    Di dalam fotonya ada darah
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-row gap-2">
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Preview</a>
-                                        <span>|</span>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"

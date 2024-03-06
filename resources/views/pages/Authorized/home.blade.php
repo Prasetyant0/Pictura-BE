@@ -236,6 +236,28 @@
 @push('jsInternalAuth')
     <script>
         $(document).ready(function() {
+            $(window).on('scroll', function() {
+                $('img[src]').each(function() {
+                    if (isElementInViewport(this) && !$(this).hasClass('loaded')) {
+                        var imgSrc = $(this).attr('src');
+                        $(this).attr('src', imgSrc);
+                        $(this).addClass('loaded');
+                    }
+                });
+            });
+
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+        });
+
+        $(document).ready(function() {
             $('#searchPost').on('keyup', function(e) {
                 performSearch();
             });
@@ -264,7 +286,7 @@
                 for (var i = 0; i < results.length; i++) {
                     var post = results[i];
                     var html = '<div class="relative rounded-lg overflow-hidden group" id="imageShow">';
-                    html += '<a href="/detailPost/' + post.id + '">';
+                    html += '<a href="/detailPost/' + post.uuid + '">';
                     html +=
                         '<img class="h-auto max-w-full rounded-lg transition-transform transform-gpu group-hover:scale-110 duration-300" src="';
                     html += '{{ asset('gallery/') }}' + '/' + post.file_location + '" alt="' + post.photo_title +

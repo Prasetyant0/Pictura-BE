@@ -44,3 +44,25 @@ window.addEventListener('DOMContentLoaded', adjustImageWidth);
 //     });
 // });
 
+function updateCommentTotal(commentCount) {
+    const commentText = commentCount + (commentCount === 1 ? ' Comment' : ' Comments');
+    $('#commentCount').text(commentText);
+}
+
+function updateLikeTotal(likeTotal) {
+    $('#likeTotal').text(likeTotal);
+}
+
+// Copy Link
+$("#btnCopy").click(function (e) {
+    e.preventDefault();
+    var currentUrl = window.location.href;
+    var tooltip = document.getElementById('notif-copy');
+
+    navigator.clipboard.writeText(currentUrl).then(() => {
+        setTimeout(function () {
+            tooltip.classList.remove('visible');
+            tooltip.classList.add('invisible');
+        }, 1000);
+    });
+});

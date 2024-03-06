@@ -7,16 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/build.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logoPictura.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Pictura | Explore</title>
+    <title>Welcome To Pictura</title>
 </head>
-
-{{-- @if (Auth::check())
-    @include('includes.navbar')
-@else
-    @include('includes.navbarauth')
-@endif --}}
-
 <body class="scrollbar-hidden bg-backcolor">
     @include('includes.navbarNoAuth')
 
@@ -32,6 +26,13 @@
 
     @stack('scriptJsInternal')
     @stack('jsInternal')
+    <script>
+        document.getElementById('searchPost').addEventListener('click', function() {
+            if (window.location.pathname !== '/explore') {
+                window.location.href = '/explore';
+            }
+        });
+    </script>
 </body>
 
 </html>

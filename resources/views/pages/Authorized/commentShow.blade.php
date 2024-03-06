@@ -12,21 +12,23 @@
             <div class="flex flex-row gap-1 items-center">
                 @if ($cl->userPostComment->username == null)
                     <p class="roboto-medium text-[13px]">
-                        {{ $cl->userPostComment->fullName }}</p>
+                        {{ Str::limit($cl->userPostComment->fullName, 10) }}</p>
                 @else
                     <p class="roboto-medium text-[13px]">
-                        {{ $cl->userPostComment->username }}</p>
+                        {{ Str::limit($cl->userPostComment->username, 10) }}</p>
                 @endif
                 <span class="roboto-light text-[13px]">|</span>
                 <p class="roboto-light text-[13px] text-[#3636367c]">
                     {{ \Carbon\Carbon::parse($cl->created_at)->format('M j, Y \a\t g:i a') }}
                 </p>
+                @if (Auth::check())
                 <span class="roboto-light text-[13px]">|</span>
                 <p class="roboto-light text-[13px] text-[#3636367c]">
                     <button type="button" class="report-modal-toggle-button">
                         Report
                     </button>
                 </p>
+                @endif
             </div>
         </div>
         <div class="ms-10">

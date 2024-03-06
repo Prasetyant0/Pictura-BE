@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|unique:users,username',
             'email' => 'required|email|max:255|unique:users',
             'birthdate' => 'required|date',
             'passwordSignup' => 'required|min:8',
@@ -119,5 +119,23 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('success', 'You have successfully logged out!');
+    }
+
+    public function authenticateAdmin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role == 'user') {
+                Auth::logout();
+                return redirect('/')->with('error', 'Access denied for User!');
+            }
+            return redirect('/admin/admin-list')->with('success', "Welcome back {$user->username} in CpanelPictura");
+        }
+        return redirect('/cpanel-pictura')->with('error', 'The provided credentials do not match our records.');
     }
 }

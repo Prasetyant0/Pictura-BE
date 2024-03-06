@@ -85,9 +85,6 @@
                         <div class="swiper-slide"><img
                                 src="{{ asset('assets/img/CarouselImg/shallow-stream-midst-alpine-trees-rolling-hills-mountain.jpg') }}"
                                 alt="" loading="lazy"></div>
-                        <div class="swiper-slide"><img
-                                src="{{ asset('assets/img/CarouselImg/shallow-stream-midst-alpine-trees-rolling-hills-mountain.jpg') }}"
-                                alt="" loading="lazy"></div>
                     </div>
                     <div class="w-full h-14 relative bottom-10 z-20 bg-backcolor curved-hidden"
                         style="border-top-left-radius: 100%; border-top-right-radius: 100%;"></div>
@@ -106,7 +103,7 @@
         </section>
 
         <section class="bg-primary" id="works">
-            <div class="flex flex-row px-24 py-16 items-center justify-between">
+            <div class="flex sm:flex-col lg:flex-row px-24 py-16 items-center justify-between">
                 <div class="w-1/2">
                     <div class="w-[500px]">
                         <img src="{{ asset('assets/img/Section2/imgleftsec.svg') }}" alt="">

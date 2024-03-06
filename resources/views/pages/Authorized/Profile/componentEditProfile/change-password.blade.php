@@ -4,25 +4,26 @@
             <div class="mb-6">
                 <h1 class="roboto-medium text-2xl text-black pt-1">Change Password</h1>
             </div>
-            <form action="#" method="post">
+            <form action="/change-password/{{ $userData->id }}" method="POST" id="changePasswordForm">
+                @csrf
                 <div class="mb-6">
-                    <label for="old-password" class="block mb-2 text-sm roboto-regular text-iconColor">Old
+                    <label for="old_password" class="block mb-2 text-sm roboto-regular text-iconColor">Old
                         Password</label>
-                    <input type="password" id="old-password"
+                    <input type="password" id="old_password" name="old_password"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
                         required>
                 </div>
                 <div class="mb-6">
-                    <label for="new-password" class="block mb-2 text-sm roboto-regular text-iconColor">New
+                    <label for="new_password" class="block mb-2 text-sm roboto-regular text-iconColor">New
                         Password</label>
-                    <input type="password" id="new-password"
+                    <input type="password" id="new_password" name="new_password"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
                         required>
                 </div>
                 <div class="mb-6">
-                    <label for="confirm-password" class="block mb-2 text-sm roboto-regular text-iconColor">Confirm New
+                    <label for="confirm_password" class="block mb-2 text-sm roboto-regular text-iconColor">Confirm New
                         Password</label>
-                    <input type="password" id="confirm-password"
+                    <input type="password" id="confirm_password" name="new_password_confirmation"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
                         required>
                 </div>

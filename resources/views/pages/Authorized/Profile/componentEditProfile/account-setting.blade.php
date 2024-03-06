@@ -4,10 +4,11 @@
             <div class="mb-6">
                 <h1 class="roboto-medium text-2xl text-black pt-1">Account Setting</h1>
             </div>
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="/update-account/{{ Auth::user()->id }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm roboto-regular text-iconColor">Email</label>
-                    <input type="email" id="email"
+                    <input type="email" id="email" name="email"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl focus:ring-primary focus:border-primary block w-full p-2.5"
                         placeholder="example777@example.com" value="{{ $userData->email }}" required>
                 </div>
@@ -19,11 +20,12 @@
                 </div>
                 <div class="mb-6">
                     <label for="gender" class="block mb-2 text-sm roboto-regular text-iconColor">Gender</label>
-                    <select id="gender"
+                    <select id="gender" name="gender"
                         class="bg-gray-50 border border-gray-300 text-colorText text-sm rounded-xl roboto-regular focus:ring-primary focus:border-primary block w-full p-2.5">
-                        <option selected>Choose your gender</option>
+                        <option selected value="">Choose your gender</option>
                         @foreach ($getGender as $key => $value)
-                        <option value="{{ $key }}" {{ $userData->gender == $key ? 'selected' : '' }}>{{ $value }}</option>
+                            <option value="{{ $key }}" {{ $userData->gender == $key ? 'selected' : '' }}>
+                                {{ $value }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -37,9 +39,16 @@
                                 and should not be searchable online</p>
                         </div>
                         <div class="w-1/2 flex justify-end">
-                            <button type="button" id="deactivate" data-modal-target="deactivate-popup"
-                                data-modal-toggle="deactivate-popup"
-                                class="roboto-medium text-sm text-colorText block py-2.5 px-4 rounded-full bg-btnsec hover:bg-gray-300">Deactivate</button>
+                            <input type="hidden" name="deactivate_account" value="{{ $userData->account_status }}">
+                            <button type="button" id="deactivate"
+                                class="roboto-medium text-sm text-colorText block py-2.5 px-4 rounded-full bg-btnsec hover:bg-gray-300"
+                                onclick="toggleDeactivate()">
+                                @if ($userData->account_status == 1)
+                                    Deactivate
+                                @else
+                                    Deactivated
+                                @endif
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -93,6 +93,9 @@ $("#upload-post-form").submit(function (e) {
         data: formData,
         processData: false,
         contentType: false,
+        headers: {
+            'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+        },
         success: function (response) {
             window.location.href = "/profile/" +  userId;
             console.log(response);
